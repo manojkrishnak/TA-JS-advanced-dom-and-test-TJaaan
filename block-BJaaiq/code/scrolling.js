@@ -1,18 +1,16 @@
 let ul = document.querySelector(".content");
 
-function randomNumber(min, max) {
-  return Math.floor(Math.random() * (max - min) + min);
-}
+let index = 0;
 
 function createContent(quotes) {
   for (let i = 0; i < 10; i++) {
-    let randomNum = randomNumber(0, quotes.length);
     let li = document.createElement("li");
-    li.innerText = quotes[randomNum].quoteText;
+    li.innerText = quotes[index].quoteText;
 
     let small = document.createElement("small");
-    let author = quotes[randomNum].quoteAuthor;
+    let author = quotes[index].quoteAuthor;
     small.innerText = author.length === 0 ? "Unknown" : author;
+    index++;
     li.append(small);
     ul.append(li);
   }
@@ -24,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("scroll", function () {
       const srollable = document.documentElement.scrollHeight - window.innerHeight;
       const scrolled = window.scrollY;
-    if (Math.ceil(scrolled) === srollable) {
+    if (Math.ceil(scrolled) === srollable && index < quotes.length) {
       createContent(quotes);
     }
   });
