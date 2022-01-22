@@ -150,6 +150,7 @@ main{
     padding: 0.5rem;
     margin: 1rem 0.5rem;
     background-color: #ee6d52;
+    overflow-y: scroll;
 }
 
 .cat{
